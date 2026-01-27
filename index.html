@@ -4,498 +4,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexander Vermeulen | Financial Analyst & Developer</title>
-    <meta name="description"
-        content="Portfolio of Alexander Vermeulen - Finance & Accounting Graduate, CFA Level 1 Candidate, and Fintech Enthusiast.">
+    <title>Alexander Vermeulen CV</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
-
-    <style>
-        /* CSS Reset & Variables */
-        :root {
-            --navy-blue: #0A192F;
-            --light-navy: #112240;
-            --lightest-navy: #233554;
-            --slate: #8892b0;
-            --light-slate: #a8b2d1;
-            --white: #e6f1ff;
-            --accent: #64ffda;
-            /* Creating a subtle teal accent for the fintech feel, or sticking to plain white/grey */
-            --accent-blue: #57cbff;
-            /* A more corporate tech blue */
-
-            --font-main: 'Inter', sans-serif;
-
-            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--navy-blue);
-            color: var(--slate);
-            font-family: var(--font-main);
-            font-size: 16px;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* Typography */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: var(--white);
-            font-weight: 600;
-            margin: 0 0 20px 0;
-            line-height: 1.1;
-        }
-
-        h1 {
-            font-size: clamp(40px, 8vw, 80px);
-        }
-
-        h2 {
-            font-size: clamp(26px, 5vw, 42px);
-        }
-
-        h3 {
-            font-size: 24px;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        a {
-            color: var(--accent-blue);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--white);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* Layout Utilities */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 100px 0;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 0;
-        }
-
-        .hero-intro {
-            color: var(--accent-blue);
-            font-size: 16px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .hero-subtitle {
-            color: var(--slate);
-            font-size: clamp(20px, 4vw, 30px);
-            margin-top: 10px;
-            max-width: 600px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--accent-blue);
-            border: 1px solid var(--accent-blue);
-            border-radius: 4px;
-            padding: 18px 26px;
-            font-size: 16px;
-            margin-top: 50px;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background-color: rgba(87, 203, 255, 0.1);
-        }
-
-        /* Section Headings */
-        .section-title {
-            display: flex;
-            align-items: center;
-            margin-bottom: 40px;
-            font-size: clamp(26px, 5vw, 32px);
-            white-space: nowrap;
-        }
-
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 300px;
-            height: 1px;
-            background-color: var(--lightest-navy);
-            margin-left: 20px;
-        }
-
-        /* Cards Style */
-        .card {
-            background-color: var(--light-navy);
-            padding: 2rem;
-            border-radius: 4px;
-            transition: var(--transition);
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
-        }
-
-        /* Projects Section */
-        .project-content h3 {
-            color: var(--white);
-        }
-
-        .tech-stack {
-            display: flex;
-            gap: 15px;
-            font-size: 13px;
-            font-family: monospace;
-            color: var(--light-slate);
-            margin-top: 20px;
-        }
-
-        /* Timeline/Experience */
-        .experience-item {
-            border-left: 2px solid var(--lightest-navy);
-            padding-left: 30px;
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .experience-item::before {
-            content: "";
-            position: absolute;
-            left: -6px;
-            top: 5px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--accent-blue);
-        }
-
-        .exp-header h3 {
-            margin-bottom: 5px;
-        }
-
-        .exp-company {
-            color: var(--accent-blue);
-            margin-bottom: 10px;
-            display: block;
-            font-size: 14px;
-        }
-
-        .exp-date {
-            font-family: monospace;
-            font-size: 13px;
-            color: var(--slate);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* Education & Leadership Grids */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .highlight-text {
-            color: var(--accent-blue);
-            font-weight: 500;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            color: var(--light-slate);
-            font-size: 14px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .section-title::after {
-                width: 100%;
-                margin-left: 15px;
-            }
-
-            #hero h1 {
-                font-size: 50px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container">
-            <p class="hero-intro">Hi, my name is</p>
-            <h1>Alexander Vermeulen.</h1>
-            <h2 class="hero-subtitle">Finance & Accounting Graduate (UCT) | CFA Level 1 Candidate | Fintech Enthusiast.
-            </h2>
-            <p style="max-width: 500px; margin-top: 20px;">
-                I combine rigorous financial analysis with modern programming skills to solve complex investment
-                problems.
-            </p>
-            <a href="#projects" class="cta-button">View Technical Projects</a>
-        </div>
-    </section>
+    <div id="app-container">
+        <!-- Top Navigation Header -->
+        <aside>
+            <div class="profile-summary">
+                <div class="profile-info-group">
+                    <div class="initials-avatar">
+                        <img src="logo.svg" alt="AV Logo" style="width: 100%; height: 100%;">
+                    </div>
+                    <div>
+                        <h2 class="profile-name">Alexander Vermeulen</h2>
+                        <p class="profile-title">Finance & Accounting | CFA L1</p>
+                    </div>
+                </div>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div style="max-width: 700px;">
-                <p>
-                    I am a <span class="highlight-text">resilient and well-balanced leader</span> with a strong
-                    foundation in finance and a competitive drive. Currently completing my <span
-                        class="highlight-text">PGDA at UCT</span>, I am passionate about bridging the gap between
-                    traditional accounting and modern financial technology.
-                </p>
-                <p>
-                    Unlike many in my field, I don't just analyze numbers—I build tools to understand them better. I
-                    combine deep financial accounting knowledge with technical skills in <span
-                        class="highlight-text">Python</span> to automate workflows and solve complex investment
-                    problems.
-                </p>
-                <p>My goal is to bring this analytical rigor and technical edge to a top-tier investment bank like RMB,
-                    FirstRand, or Standard Bank.</p>
+                <div class="contact-mini">
+                    <p>📍 Cape Town</p> <!-- Shortened for space -->
+                    <p>📧 alexander.vermeulen22@gmail.com</p>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- The 'Unfair Advantage' (Projects) -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">The Unfair Advantage</h2>
-            <div class="card">
-                <div class="project-content">
-                    <p class="intro-text"
-                        style="color: var(--accent-blue); margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 1px;">
-                        FEATURED TECHNICAL PROJECT</p>
-                    <h3>Dynamic Portfolio Analysis Tool</h3>
-                    <div
-                        style="background-color: var(--lightest-navy); padding: 20px; border-radius: 4px; margin: 20px 0;">
-                        <p style="margin-bottom: 0; color: var(--light-slate);">
-                            Developed a dynamic tool to automate portfolio risk assessment, significantly reducing
-                            manual analysis time. The system features real-time data fetching, automated variance
-                            reporting, and interactive visualizations to track asset performance against benchmarks.
+            <nav class="tabs">
+                <button class="tab-btn active" data-tab="profile">Profile</button>
+                <button class="tab-btn" data-tab="experience">Experience</button>
+                <button class="tab-btn" data-tab="projects">Projects</button>
+                <button class="tab-btn" data-tab="education">Education</button>
+                <button class="tab-btn" data-tab="leadership">Leadership</button>
+                <button class="tab-btn" data-tab="sport">Sport</button>
+                <button class="tab-btn" data-tab="references">References</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main>
+
+            <!-- 1. Profile Tab -->
+            <section id="profile" class="tab-content active">
+                <div class="section-header">
+                    <h1>Professional Profile</h1>
+                </div>
+                <p class="lead" style="font-size: 1.1rem; color: var(--slate-lighter); margin-bottom: 1.5rem;">
+                    I am a resilient and well-balanced leader with a passion for people and the pursuit of knowledge.
+                </p>
+                <div class="card">
+                    <div class="card-body">
+                        <p style="margin-bottom: 1rem;">
+                            Described as having a "calming influence" that inspires teams to peak performance even under
+                            difficult circumstances, I possess a unique ability to connect broadly across cultural
+                            groups.
+                        </p>
+                        <p>
+                            With a strong foundation in <span style="color: var(--accent);">finance and
+                                accounting</span> and a competitive drive to succeed in complex tasks, I am someone who
+                            excels in high-performance environments and has the required character to perform under any
+                            circumstances.
                         </p>
                     </div>
-                    <ul class="tech-stack">
-                        <li>Python</li>
-                        <li>Streamlit</li>
-                        <li>Pandas</li>
-                        <li>Financial Modeling</li>
-                    </ul>
-                    <a href="https://dynamic-portfolio-assessment-tool-gmbn774qrfty8ftbubwfm3.streamlit.app/"
-                        target="_blank" class="project-link"
-                        style="margin-top: 20px; display: inline-block; border: 1px solid var(--accent-blue); padding: 10px 20px; border-radius: 4px; color: var(--accent-blue); text-decoration: none; transition: all 0.25s ease;">View
-                        Project &rarr;</a>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Professional Experience -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <!-- 2. Experience Tab -->
+            <section id="experience" class="tab-content">
+                <div class="section-header">
+                    <h1>Professional Experience</h1>
+                </div>
 
-            <div class="experience-list">
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <h3>Investment Analyst</h3>
-                        <span class="exp-company">Lionhead Capital</span>
-                        <span class="exp-date">2023 - Present (Part-time/Internships)</span>
+                <!-- Lionhead Capital -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <span class="card-title">Investment Analyst</span>
+                            <span class="card-subtitle"> @ Lionhead Capital</span>
+                        </div>
                     </div>
-                    <p>
-                        Executed DCF valuations and analyzed private businesses for the Investment Committee. Performed
-                        rigorous due diligence across Mining and Real Estate sectors, contributing to key investment
-                        decisions.
-                    </p>
-                </div>
-
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <h3>Backline & Attack Coach</h3>
-                        <span class="exp-company">Bishops First XV</span>
-                        <span class="exp-date">2021 - 2023</span>
+                    <div class="card-body">
+                        <ul>
+                            <li>Executed detailed Discounted Cash Flow (DCF) valuations and analyzed private businesses
+                                for presentation to the Investment Committee.</li>
+                            <li>Performed comprehensive financial reporting due diligence and evaluated
+                                macro/microeconomic factors across Mining, Real Estate, and Portfolio Management
+                                sectors.</li>
+                            <li>Engaged directly with clients and provided strategic feedback in collaboration with
+                                senior associates.</li>
+                            <li>Provided detailed risk analysis and due diligence on specific ESG requirements across
+                                various sectors and different countries.</li>
+                            <li>Completed a Wall Street Prep course consisting of Financial Statements, DCF, M&A,
+                                Trading Comps, and LBO models.</li>
+                        </ul>
                     </div>
-                    <p>
-                        Architect of offensive strategies, focusing on technical skill development and high-pressure
-                        tactical execution. Mentored young athletes in discipline and teamwork.
-                    </p>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Education -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education & Qualifications</h2>
-            <div class="grid-2">
+                <!-- Bishops -->
                 <div class="card">
-                    <h3 style="color: var(--white); font-size: 20px;">University of Cape Town</h3>
-                    <p style="font-size: 14px; margin-bottom: 5px;">PGDA (2026)</p>
-                    <p style="font-size: 14px; margin-bottom: 5px;">B.Bus Science Finance & Accounting (2022–2025)</p>
-                    <ul
-                        style="font-size: 14px; margin-top: 15px; color: var(--light-slate); list-style-type: disc; padding-left: 20px;">
-                        <li>Awards: UCT Sport Scholarship</li>
-                    </ul>
+                    <div class="card-header">
+                        <div>
+                            <span class="card-title">Backline & Attack Coach</span>
+                            <span class="card-subtitle"> @ Bishops First XV</span>
+                        </div>
+                        <span class="card-date">2026</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Architect of offensive strategies for a premier schoolboy rugby team, focusing on
+                                technical skill development and tactical execution.</li>
+                            <li>Previously served as u16A and 2nd XV coach (2025).</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3 style="color: var(--white); font-size: 20px;">CFA Institute</h3>
-                    <p style="font-size: 14px;">Level One Candidate</p>
-                    <p style="font-size: 14px; margin-top: 10px; color: var(--light-slate);">Focusing on Investment
-                        Tools, Asset Classes, and Portfolio Management.</p>
-                </div>
-                <div class="card">
-                    <h3 style="color: var(--white); font-size: 20px;">Michaelhouse</h3>
-                    <p style="font-size: 14px;">Matriculated 2021</p>
-                    <ul
-                        style="font-size: 14px; margin-top: 15px; color: var(--light-slate); list-style-type: disc; padding-left: 20px;">
-                        <li>5 Distinctions</li>
-                        <li>"A" Average</li>
-                        <li>Snell Society Member</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Leadership -->
-    <section id="leadership">
-        <div class="container">
-            <h2 class="section-title">Leadership & Impact</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h4 style="color: var(--accent-blue);">Chairman | UCT Rugby Club</h4>
-                    <span
-                        style="font-family: monospace; font-size: 12px; margin-bottom: 10px; display: block;">2024–Present</span>
-                    <p style="font-size: 14px;">Lead strategic and administrative functions for the club, managing
-                        budgets and stakeholder relationships.</p>
+            <!-- 3. Projects Tab -->
+            <section id="projects" class="tab-content">
+                <div class="section-header">
+                    <h1>Technical Projects</h1>
                 </div>
-                <div class="card">
-                    <h4 style="color: var(--accent-blue);">Varsity Cup Winner</h4>
-                    <span
-                        style="font-family: monospace; font-size: 12px; margin-bottom: 10px; display: block;">2025</span>
-                    <p style="font-size: 14px;">Vice-Captain of UCT Ikey Tigers First XV. Led the team through a
-                        high-performance season to victory.</p>
+
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Dynamic Portfolio Tool</span>
+                        </div>
+                        <div class="card-body">
+                            <p>Automated assessment portfolio tool for risk analysis and reporting.</p>
+                            <div class="tech-stack">Python, Data Analysis</div>
+                            <a href="https://dynamic-portfolio-assessment-tool-gmbn774qrfty8ftbubwfm3.streamlit.app/"
+                                target="_blank" class="project-link">View Project &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">CV Website</span>
+                        </div>
+                        <div class="card-body">
+                            <p>Interactive, premium personal portfolio website showcasing professional history.</p>
+                            <div class="tech-stack">HTML, CSS, JS</div>
+                            <a href="index.html" target="_blank" class="project-link">View Project
+                                &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">JIBAR to ZARONIA</span>
+                        </div>
+                        <div class="card-body">
+                            <p>Financial conversion project handling the transition from JIBAR to the new ZARONIA
+                                benchmark rate.</p>
+                            <div class="tech-stack">Finance, Modelling</div>
+                            <a href="#" class="project-link">View Project &rarr;</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <h4 style="color: var(--accent-blue);">Community Service</h4>
-                    <p style="font-size: 14px;">Dedicated service at SPCA and Khamizula Orphanage, contributing to
-                        community upliftment initiatives.</p>
+            </section>
+
+            <!-- 4. Education Tab -->
+            <section id="education" class="tab-content">
+                <div class="section-header">
+                    <h1>Education & Qualifications</h1>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="mailto:alexander.vermeulen22@gmail.com">Email</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-            </div>
-            <p>&copy; 2026 Alexander Vermeulen. Built for the future of Fintech.</p>
-        </div>
-    </footer>
+                <!-- UCT -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">University of Cape Town (UCT)</span>
+                        <span class="card-date">2022 – Present</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>PGDA:</strong> (2026)</li>
+                            <li><strong>B.Bus Science Finance & Accounting:</strong> Completed 2025</li>
+                            <li><strong>Awards:</strong> UCT Sport Scholarship Award.</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <!-- Scripts -->
-    <script>
-        // Scroll Reveal Animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
+                <!-- CFA -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">CFA Institute</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Passed Level 1</li>
+                        </ul>
+                    </div>
+                </div>
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Only animate once
-                    }
-                });
-            }, observerOptions);
+                <!-- Michaelhouse -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Michaelhouse</span>
+                        <span class="card-date">2017 – 2021</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>Academic Performance:</strong> Maintained an "A" average throughout.</li>
+                            <li><strong>Matric Results:</strong> Achieved Five Distinctions.</li>
+                            <li><strong>Awards:</strong> Academic Honours; Rector's All-Rounder Scholarship.</li>
+                            <li><strong>The Snell Society:</strong> Selected by Rector for rigorous academic debate.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
+                <!-- WHPS -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Waterkloof House Preparatory School (WHPS)</span>
+                        <span class="card-date">2007 – 2016</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Leadership Tab -->
+            <section id="leadership" class="tab-content">
+                <div class="section-header">
+                    <h1>Leadership & Community</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Chairman | UCT Rugby Club</span>
+                        <span class="card-date">2024 – Present</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Leading the strategic and administrative functions of the club.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Vice-Captain | UCT Ikey Tigers</span>
+                        <span class="card-date">2025</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Provided leadership for the 2025 Varsity Cup Winners.</p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-title">School Prefect</span>
+                        <p class="card-subtitle">Michaelhouse</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Responsible for student governance and ethical
+                            house leadership.</p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Captaincy</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Captained UCT u20A (2023) and every rugby team
+                            played in throughout school career.</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:1.5rem;">
+                    <div class="card-header">
+                        <span class="card-title">Community & Awards</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>The Wain Good Fellowship Prize (WHPS):</strong> Outstanding student contribution
+                                to academics, sport, and culture.</li>
+                            <li><strong>Community Work:</strong> Dedicated service at SPCA and Khamizula Orphanage.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Sport Tab -->
+            <section id="sport" class="tab-content">
+                <div class="section-header">
+                    <h1>Sporting Achievements</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Rugby</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>Varsity Cup:</strong> Winner (2025), Runner Up (2024).</li>
+                            <li><strong>University World Cup:</strong> Winner (France, 2023).</li>
+                            <li><strong>Provincial:</strong> Western Province U21 (2023) & U20 (2022); KZN Rugby U16
+                                Grant Khomo.</li>
+                            <li><strong>Individual:</strong> 1st Team Player’s Player of the Year, UCT Rugby Leadership
+                                Award (2025).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Other Sports</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>Cricket:</strong> SA Schools Cricket (2021), Michaelhouse 1st Team Vice-Captain.
+                            </li>
+                            <li><strong>Soccer:</strong> KZN Soccer (annually), Michaelhouse 1st Team Captain.</li>
+                            <li><strong>Awards:</strong> Des Sacco Award (Michaelhouse Sportsman of the Year).</li>
+                            <li><strong>Major Cups (WHPS):</strong> Miller Family Cup (Rugby), Tindall Cup (Soccer), Ben
+                                Steyn Cup (Best All-Rounder).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. References Tab -->
+            <section id="references" class="tab-content">
+                <div class="section-header">
+                    <h1>References</h1>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-title">Tom Dawson-Squibb</span>
+                        <p class="card-subtitle">Int. High Performance Coach</p>
+                        <p style="margin-top: 0.5rem; color: var(--accent);">+27 (0) 83 860 6997</p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Greg Fury</span>
+                        <p class="card-subtitle">Targe Capital</p>
+                        <p style="margin-top: 0.5rem;">+27 (0) 82 883 1308</p>
+                        <a href="mailto:greg@targe.co.za">greg@targe.co.za</a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Robbie Fleck</span>
+                        <p class="card-subtitle">Fanlib</p>
+                        <p style="margin-top: 0.5rem;">+27 (0) 82 443 3463</p>
+                        <a href="mailto:Rob@fanlib.com">Rob@fanlib.com</a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Wes Chetty</span>
+                        <p style="margin-top: 0.5rem;">+27 (0) 83 273 5997</p>
+                        <a href="mailto:chettywesley@yahoo.com">chettywesley@yahoo.com</a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Neville Isdell</span>
+                        <a href="mailto:neville@isdell.net">neville@isdell.net</a>
+                    </div>
+
+                    <div class="card"><span class="card-title">David Deetlefs</span></div>
+                    <div class="card"><span class="card-title">Paul Quirk</span></div>
+                    <div class="card"><span class="card-title">Edward LePine Williams</span></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

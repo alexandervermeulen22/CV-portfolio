@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander Vermeulen | Financial Analyst & Developer</title>
+    <meta name="description"
+        content="Portfolio of Alexander Vermeulen - Finance & Accounting Graduate, CFA Level 1 Candidate, and Fintech Enthusiast.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --navy-blue: #0A192F;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --white: #e6f1ff;
+            --accent: #64ffda;
+            /* Creating a subtle teal accent for the fintech feel, or sticking to plain white/grey */
+            --accent-blue: #57cbff;
+            /* A more corporate tech blue */
+
+            --font-main: 'Inter', sans-serif;
+
+            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--navy-blue);
+            color: var(--slate);
+            font-family: var(--font-main);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--white);
+            font-weight: 600;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(40px, 8vw, 80px);
+        }
+
+        h2 {
+            font-size: clamp(26px, 5vw, 42px);
+        }
+
+        h3 {
+            font-size: 24px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--white);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 0;
+        }
+
+        .hero-intro {
+            color: var(--accent-blue);
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-subtitle {
+            color: var(--slate);
+            font-size: clamp(20px, 4vw, 30px);
+            margin-top: 10px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+            border-radius: 4px;
+            padding: 18px 26px;
+            font-size: 16px;
+            margin-top: 50px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: rgba(87, 203, 255, 0.1);
+        }
+
+        /* Section Headings */
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: clamp(26px, 5vw, 32px);
+            white-space: nowrap;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 300px;
+            height: 1px;
+            background-color: var(--lightest-navy);
+            margin-left: 20px;
+        }
+
+        /* Cards Style */
+        .card {
+            background-color: var(--light-navy);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        /* Projects Section */
+        .project-content h3 {
+            color: var(--white);
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            font-family: monospace;
+            color: var(--light-slate);
+            margin-top: 20px;
+        }
+
+        /* Timeline/Experience */
+        .experience-item {
+            border-left: 2px solid var(--lightest-navy);
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .experience-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+        }
+
+        .exp-header h3 {
+            margin-bottom: 5px;
+        }
+
+        .exp-company {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            display: block;
+            font-size: 14px;
+        }
+
+        .exp-date {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--slate);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Education & Leadership Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .highlight-text {
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--light-slate);
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-title::after {
+                width: 100%;
+                margin-left: 15px;
+            }
+
+            #hero h1 {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <p class="hero-intro">Hi, my name is</p>
+            <h1>Alexander Vermeulen.</h1>
+            <h2 class="hero-subtitle">Finance & Accounting Graduate (UCT) | CFA Level 1 Candidate | Fintech Enthusiast.
+            </h2>
+            <p style="max-width: 500px; margin-top: 20px;">
+                I combine rigorous financial analysis with modern programming skills to solve complex investment
+                problems.
+            </p>
+            <a href="#projects" class="cta-button">View Technical Projects</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div style="max-width: 700px;">
+                <p>
+                    I am a <span class="highlight-text">resilient and well-balanced leader</span> with a strong
+                    foundation in finance and a competitive drive. Currently completing my <span
+                        class="highlight-text">PGDA at UCT</span>, I am passionate about bridging the gap between
+                    traditional accounting and modern financial technology.
+                </p>
+                <p>
+                    Unlike many in my field, I don't just analyze numbers—I build tools to understand them better. I
+                    combine deep financial accounting knowledge with technical skills in <span
+                        class="highlight-text">Python</span> to automate workflows and solve complex investment
+                    problems.
+                </p>
+                <p>My goal is to bring this analytical rigor and technical edge to a top-tier investment bank like RMB,
+                    FirstRand, or Standard Bank.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The 'Unfair Advantage' (Projects) -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">The Unfair Advantage</h2>
+            <div class="card">
+                <div class="project-content">
+                    <p class="intro-text"
+                        style="color: var(--accent-blue); margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: 1px;">
+                        FEATURED TECHNICAL PROJECT</p>
+                    <h3>Dynamic Portfolio Analysis Tool</h3>
+                    <div
+                        style="background-color: var(--lightest-navy); padding: 20px; border-radius: 4px; margin: 20px 0;">
+                        <p style="margin-bottom: 0; color: var(--light-slate);">
+                            Developed a dynamic tool to automate portfolio risk assessment, significantly reducing
+                            manual analysis time. The system features real-time data fetching, automated variance
+                            reporting, and interactive visualizations to track asset performance against benchmarks.
+                        </p>
+                    </div>
+                    <ul class="tech-stack">
+                        <li>Python</li>
+                        <li>Streamlit</li>
+                        <li>Pandas</li>
+                        <li>Financial Modeling</li>
+                    </ul>
+                    <a href="https://dynamic-portfolio-assessment-tool-gmbn774qrfty8ftbubwfm3.streamlit.app/"
+                        target="_blank" class="project-link"
+                        style="margin-top: 20px; display: inline-block; border: 1px solid var(--accent-blue); padding: 10px 20px; border-radius: 4px; color: var(--accent-blue); text-decoration: none; transition: all 0.25s ease;">View
+                        Project &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+
+            <div class="experience-list">
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <h3>Investment Analyst</h3>
+                        <span class="exp-company">Lionhead Capital</span>
+                        <span class="exp-date">2023 - Present (Part-time/Internships)</span>
+                    </div>
+                    <p>
+                        Executed DCF valuations and analyzed private businesses for the Investment Committee. Performed
+                        rigorous due diligence across Mining and Real Estate sectors, contributing to key investment
+                        decisions.
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <h3>Backline & Attack Coach</h3>
+                        <span class="exp-company">Bishops First XV</span>
+                        <span class="exp-date">2021 - 2023</span>
+                    </div>
+                    <p>
+                        Architect of offensive strategies, focusing on technical skill development and high-pressure
+                        tactical execution. Mentored young athletes in discipline and teamwork.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education & Qualifications</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="color: var(--white); font-size: 20px;">University of Cape Town</h3>
+                    <p style="font-size: 14px; margin-bottom: 5px;">PGDA (2026)</p>
+                    <p style="font-size: 14px; margin-bottom: 5px;">B.Bus Science Finance & Accounting (2022–2025)</p>
+                    <ul
+                        style="font-size: 14px; margin-top: 15px; color: var(--light-slate); list-style-type: disc; padding-left: 20px;">
+                        <li>Awards: UCT Sport Scholarship</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--white); font-size: 20px;">CFA Institute</h3>
+                    <p style="font-size: 14px;">Level One Candidate</p>
+                    <p style="font-size: 14px; margin-top: 10px; color: var(--light-slate);">Focusing on Investment
+                        Tools, Asset Classes, and Portfolio Management.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--white); font-size: 20px;">Michaelhouse</h3>
+                    <p style="font-size: 14px;">Matriculated 2021</p>
+                    <ul
+                        style="font-size: 14px; margin-top: 15px; color: var(--light-slate); list-style-type: disc; padding-left: 20px;">
+                        <li>5 Distinctions</li>
+                        <li>"A" Average</li>
+                        <li>Snell Society Member</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership -->
+    <section id="leadership">
+        <div class="container">
+            <h2 class="section-title">Leadership & Impact</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h4 style="color: var(--accent-blue);">Chairman | UCT Rugby Club</h4>
+                    <span
+                        style="font-family: monospace; font-size: 12px; margin-bottom: 10px; display: block;">2024–Present</span>
+                    <p style="font-size: 14px;">Lead strategic and administrative functions for the club, managing
+                        budgets and stakeholder relationships.</p>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--accent-blue);">Varsity Cup Winner</h4>
+                    <span
+                        style="font-family: monospace; font-size: 12px; margin-bottom: 10px; display: block;">2025</span>
+                    <p style="font-size: 14px;">Vice-Captain of UCT Ikey Tigers First XV. Led the team through a
+                        high-performance season to victory.</p>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--accent-blue);">Community Service</h4>
+                    <p style="font-size: 14px;">Dedicated service at SPCA and Khamizula Orphanage, contributing to
+                        community upliftment initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="mailto:alexander.vermeulen22@gmail.com">Email</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+            <p>&copy; 2026 Alexander Vermeulen. Built for the future of Fintech.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll Reveal Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>
