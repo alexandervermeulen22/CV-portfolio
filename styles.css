@@ -1,0 +1,424 @@
+/* Alexander Vermeulen CV - Premium Styles */
+
+/* 1. Variables & Review */
+:root {
+    --navy: #0a192f;
+    --navy-light: #112240;
+    --navy-lighter: #233554;
+    --slate: #8892b0;
+    --slate-light: #a8b2d1;
+    --slate-lighter: #ccd6f6;
+    --white: #e6f1ff;
+    --accent: #64ffda;
+    --accent-glow: rgba(100, 255, 218, 0.1);
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--navy);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--navy-lighter);
+    border: 3px solid var(--navy);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--slate);
+}
+
+/* 2. Reset & Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--navy);
+    color: var(--slate);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.15;
+    -webkit-font-smoothing: antialiased;
+    /* App-like feel */
+    height: 100vh;
+    display: flex;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--slate-lighter);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+/* 3. Layout: Top Navigation & Content */
+#app-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    /* Full width */
+    margin: 0;
+}
+
+/* Sidebar transformed to Top Header */
+aside {
+    width: 100%;
+    height: auto;
+    /* Allow content to dictate height */
+    background-color: var(--navy-light);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.profile-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    text-align: left;
+    gap: 1rem;
+}
+
+.profile-info-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.initials-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    margin: 0;
+    /* other styles inherited */
+}
+
+.profile-name {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0;
+}
+
+.profile-title {
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 0;
+    display: none;
+    /* Hide title on very small screens if needed, or keep */
+}
+
+@media (min-width: 768px) {
+    .profile-title {
+        display: block;
+    }
+}
+
+/* Contact in Header */
+.contact-mini {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+}
+
+.contact-mini p {
+    margin-bottom: 0;
+}
+
+/* Navigation Tabs - Horizontal */
+nav.tabs {
+    flex: none;
+    overflow-y: visible;
+    overflow-x: auto;
+    display: flex;
+    gap: 1rem;
+    border-top: 1px solid var(--navy-lighter);
+    padding-top: 10px;
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    width: auto;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--slate);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    justify-content: center;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    background-color: transparent;
+    color: var(--white);
+}
+
+.tab-btn.active {
+    border-bottom-color: var(--accent);
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+    background: transparent;
+    /* Remove gradient overlap if needed, or keep */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sections Styling */
+.section-header {
+    border-bottom: 1px solid var(--navy-lighter);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Cards & Lists */
+.card {
+    background-color: var(--navy-light);
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background-color: var(--navy-lighter);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card-title {
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.card-subtitle {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+}
+
+.card-date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--slate);
+}
+
+.card-body ul {
+    list-style: none;
+}
+
+.card-body li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.card-body li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* Project Specific */
+.tech-stack {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--slate-light);
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.project-link:hover {
+    background-color: var(--accent-glow);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* Reference Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        height: auto;
+        overflow: auto;
+    }
+
+    #app-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    aside {
+        width: 100%;
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .initials-avatar,
+    .contact-mini {
+        display: none;
+        /* Simplify header for mobile */
+    }
+
+    .profile-summary {
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .profile-title {
+        margin-bottom: 0;
+    }
+
+    nav.tabs {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+        width: auto;
+        white-space: nowrap;
+        padding: 0.5rem 1rem;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        font-size: 0.9rem;
+    }
+
+    .tab-btn.active {
+        border-left: none;
+        border-bottom-color: var(--accent);
+        background: transparent;
+    }
+
+    main {
+        padding: 1.5rem;
+    }
+}
