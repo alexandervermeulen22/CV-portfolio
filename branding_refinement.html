@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV Logo Refinement</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        p.subtitle {
+            color: #86868b;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo-container {
+            width: 220px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .caption {
+            text-align: center;
+        }
+
+        .caption h3 {
+            margin: 0 0 8px 0;
+            font-weight: 600;
+        }
+
+        .caption p {
+            margin: 0;
+            color: #86868b;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Refined Concepts: Bold Linear</h1>
+    <p class="subtitle">Focusing on bold, balanced lines for both 'A' and 'V'.</p>
+
+    <div class="grid">
+        <!-- Variation 1: Direct Overlay -->
+        <div class="card">
+            <div class="logo-container">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Bold A -->
+                    <path d="M20 85 L50 15 L80 85" fill="none" stroke="black" stroke-width="12" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M35 55 H65" stroke="black" stroke-width="12" stroke-linecap="round" />
+                    <!-- Bold V Overlay (Interlaced effect using mask? No, let's just layer for now or offset) -->
+                    <!-- Placing V slightly lower or interwoven. Let's try Centered Overlay -->
+                    <path d="M20 15 L50 85 L80 15" fill="none" stroke="black" stroke-width="12" stroke-linecap="round"
+                        stroke-linejoin="round" opacity="0.3" />
+                    <!-- Wait, user wants BOTH bold. Opacity 0.3 is not bold. -->
+                </svg>
+                <!-- Retrying V1: The "Star" Intersection -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="mix-blend-mode: multiply;">
+                    <path d="M15 85 L50 15 L85 85" fill="none" stroke="black" stroke-width="10" stroke-linejoin="round"
+                        stroke-linecap="round" />
+                    <path d="M32 60 H68" stroke="black" stroke-width="10" stroke-linecap="round" />
+                    <path d="M15 15 L50 85 L85 15" fill="none" stroke="black" stroke-width="10" stroke-linejoin="round"
+                        stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="caption">
+                <h3>The Star Intersect</h3>
+                <p>Classic monogram where A and V overlap perfectly to form a star-like geometry.</p>
+            </div>
+        </div>
+
+        <!-- Variation 2: Interwoven / Woven -->
+        <div class="card">
+            <div class="logo-container">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- A -->
+                    <path d="M25 80 L50 20 L75 80" fill="none" stroke="black" stroke-width="12"
+                        stroke-linecap="square" />
+                    <!-- Crossbar -->
+                    <path d="M38 50 H62" stroke="black" stroke-width="12" />
+                    <!-- V -->
+                    <!-- To make it readable, maybe V starts inside? -->
+                    <path d="M35 30 L50 65 L65 30" fill="none" stroke="black" stroke-width="12" stroke-linecap="square"
+                        stroke-linejoin="bevel" />
+                </svg>
+            </div>
+            <div class="caption">
+                <h3>Nested Monogram</h3>
+                <p>The V nests firmly within the A. Compact and solid.</p>
+            </div>
+        </div>
+
+        <!-- Variation 3: Shared Stroke (The "Zig Zag") -->
+        <div class="card">
+            <div class="logo-container">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Up, Down, Up (A then V sharing the middle? No that's N) -->
+                    <!-- A left leg, A right/V left leg, V right leg -->
+                    <path d="M20 80 L40 20 L60 80" fill="none" stroke="black" stroke-width="12" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M30 50 H50" stroke="black" stroke-width="12" stroke-linecap="round" />
+                    <!-- V connecting -->
+                    <path d="M60 80 L80 20" fill="none" stroke="black" stroke-width="12" stroke-linecap="round" />
+                    <!-- This reads as AV but fused -->
+                </svg>
+            </div>
+            <div class="caption">
+                <h3>Fused Connection</h3>
+                <p>A continuous flow from A to V. Dynamic and forward-moving.</p>
+            </div>
+        </div>
+
+        <!-- Variation 4: The Parallel Tech -->
+        <div class="card">
+            <div class="logo-container">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- A -->
+                    <path d="M30 80 L50 20 L70 80" stroke="black" stroke-width="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M40 50 H60" stroke="black" stroke-width="10" stroke-linecap="round" />
+                    <!-- V Floating above or below? -->
+                    <!-- Let's do V encompassing A -->
+                    <path d="M10 10 L50 90 L90 10" stroke="black" stroke-width="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="caption">
+                <h3>The Container</h3>
+                <p>A large, bold V framing the A. Strong hierarchy and balance.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
