@@ -4,100 +4,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JIBAR-ZARONIA Valuation Engine</title>
+    <title>Alexander Vermeulen CV</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
 </head>
 
 <body>
 
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <img src="favicon.png" alt="JIBAR-ZARONIA Logo" class="rmb-logo">
+    <div id="app-container">
+        <!-- Top Navigation Header -->
+        <aside>
+            <div class="profile-summary">
+                <div class="profile-info-group">
+                    <div class="initials-avatar">
+                        <img src="logo.svg" alt="AV Logo" style="width: 100%; height: 100%;">
+                    </div>
+                    <div>
+                        <h2 class="profile-name">Alexander Vermeulen</h2>
+                        <p class="profile-title">B Bus Sci Finance and Accounting (UCT) | CFA L1</p>
+                    </div>
+                </div>
+
+                <div class="contact-mini">
+                    <p>📍 Cape Town</p> <!-- Shortened for space -->
+                    <p>📧 alexander.vermeulen22@gmail.com</p>
+                </div>
             </div>
-            <h1>JIBAR-ZARONIA Engine</h1>
-            <p>Advanced Swap Valuation & Comparison Protocol</p>
-        </header>
 
-        <main class="dashboard-grid">
-            <section class="input-panel glass-card">
-                <h2>Parameters</h2>
-                <form id="valuation-form">
-                    <div class="form-group">
-                        <label for="principal">Principal Amount (R)</label>
-                        <input type="number" id="principal" name="principal" value="100000000" required>
+            <nav class="tabs">
+                <button class="tab-btn active" data-tab="profile">Profile</button>
+                <button class="tab-btn" data-tab="experience">Experience</button>
+                <button class="tab-btn" data-tab="projects">Projects</button>
+                <button class="tab-btn" data-tab="education">Education</button>
+                <button class="tab-btn" data-tab="leadership">Leadership</button>
+                <button class="tab-btn" data-tab="sport">Sport</button>
+                <button class="tab-btn" data-tab="references">References</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main>
+
+            <!-- 1. Profile Tab -->
+            <section id="profile" class="tab-content active">
+                <div class="section-header">
+                    <h1>Professional Profile</h1>
+                </div>
+                <p class="lead" style="font-size: 1.1rem; color: var(--slate-lighter); margin-bottom: 1.5rem;">
+                    I am a resilient and well-balanced leader with a passion for people and the pursuit of knowledge.
+                </p>
+                <div class="card">
+                    <div class="card-body">
+                        <p style="margin-bottom: 1rem;">
+                            Described as having a "calming influence" that inspires teams to peak performance even under
+                            difficult circumstances, I possess a unique ability to connect broadly across cultural
+                            groups.
+                        </p>
+                        <p>
+                            With a strong foundation in <span style="color: var(--accent);">finance and
+                                accounting</span> and a competitive drive to succeed in complex tasks, I am someone who
+                            excels in high-performance environments and has the required character to perform under any
+                            circumstances.
+                        </p>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="start_date">Start Date</label>
-                            <input type="date" id="start_date" name="start_date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="end_date">End Date</label>
-                            <input type="date" id="end_date" name="end_date" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fixed_rate">Fixed Rate (%)</label>
-                            <input type="number" step="0.01" id="fixed_rate" name="fixed_rate" value="7.00" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="jibar_rate">JIBAR Rate (%)</label>
-                            <input type="number" step="0.01" id="jibar_rate" name="jibar_rate" value="7.00" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="zaronia_spread">ZARONIA Spread (bps)</label>
-                        <input type="number" step="0.01" id="zaronia_spread" name="zaronia_spread" value="0"
-                            placeholder="e.g. 1.5">
-                    </div>
-
-                    <div class="button-group">
-                        <button type="submit" class="cta-button" id="calc-btn">
-                            <span>Calculate</span>
-                            <div class="btn-shine"></div>
-                        </button>
-                        <button type="button" class="cta-button secondary-btn" id="download-btn">
-                            <span>Download Report</span>
-                        </button>
-                    </div>
-                    <div id="error-message" class="error-msg"></div>
-                </form>
-            </section>
-
-            <section class="results-panel" id="results-panel">
-                <div class="result-card glass-card">
-                    <h3>Fixed Leg</h3>
-                    <div class="result-value" id="res-fixed">--</div>
-                    <div class="result-sub">Fixed Interest Interest</div>
                 </div>
 
-                <div class="result-card glass-card">
-                    <h3>JIBAR (Floating)</h3>
-                    <div class="result-value" id="res-jibar">--</div>
-                    <div class="result-sub">Projected Floating Leg</div>
-                </div>
-
-                <div class="result-card glass-card highlight-card">
-                    <h3>ZARONIA (Floating)</h3>
-                    <div class="result-value" id="res-zaronia">--</div>
-                    <div class="result-sub">Backward-Looking Compound</div>
-                </div>
-
-                <div class="result-card glass-card full-width">
-                    <h3>Net Difference</h3>
-                    <div class="result-value difference" id="res-diff">--</div>
-                    <div class="result-sub" id="res-impact">Comparison Analysis</div>
+                <div class="card">
+                    <div class="card-body">
+                        <p style="font-style: italic; margin-bottom: 1rem; color: var(--slate-lighter);">
+                            "Alex is a resilient leader who has the ability to connect broadly across cultural groups. I
+                            find one of his most attractive traits as a leader is his willingness to compete and buy
+                            into
+                            the task at hand even if things don’t go his way or succeed immediately. This is something I
+                            believe will take him far."
+                        </p>
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
+                            <span style="color: var(--white); font-weight: 600;">Tom Dawson-Squibb</span>
+                            <span
+                                style="color: var(--accent); font-family: var(--font-mono); font-size: 0.85rem; margin-top: 4px;">Ikey
+                                Tigers Coach (2019-2024)</span>
+                            <span style="color: var(--slate); font-size: 0.85rem;">International High Performance
+                                Coach</span>
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <!-- 2. Experience Tab -->
+            <section id="experience" class="tab-content">
+                <div class="section-header">
+                    <h1>Professional Experience</h1>
+                </div>
+
+                <!-- Lionhead Capital -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <span class="card-title">Investment Analyst</span>
+                            <span class="card-subtitle"> @ Lionhead Capital</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Executed detailed Discounted Cash Flow (DCF) valuations and analyzed private businesses
+                                for presentation to the Investment Committee.</li>
+                            <li>Performed comprehensive financial reporting due diligence and evaluated
+                                macro/microeconomic factors across Mining, Real Estate, and Portfolio Management
+                                sectors.</li>
+                            <li>Engaged directly with clients and provided strategic feedback in collaboration with
+                                senior associates.</li>
+                            <li>Provided detailed risk analysis and due diligence on specific ESG requirements across
+                                various sectors and different countries.</li>
+                            <li>Completed a Wall Street Prep course consisting of Financial Statements, DCF, M&A,
+                                Trading Comps, and LBO models.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bishops -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <span class="card-title">Backline & Attack Coach</span>
+                            <span class="card-subtitle"> @ Bishops First XV</span>
+                        </div>
+                        <span class="card-date">2026</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Architect of offensive strategies for a premier schoolboy rugby team, focusing on
+                                technical skill development and tactical execution.</li>
+                            <li>Previously served as u16A and 2nd XV coach (2025).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Projects Tab -->
+            <section id="projects" class="tab-content">
+                <div class="section-header">
+                    <h1>Technical Projects</h1>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Dynamic Portfolio Tool</span>
+                        </div>
+                        <div class="card-body">
+                            <p>Automated assessment portfolio tool for risk analysis and reporting.</p>
+                            <div class="tech-stack">Python, Data Analysis</div>
+                            <a href="https://dynamic-portfolio-assessment-tool-gmbn774qrfty8ftbubwfm3.streamlit.app/"
+                                target="_blank" class="project-link">View Project &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">CV Website</span>
+                        </div>
+                        <div class="card-body">
+                            <p>Interactive, premium personal portfolio website showcasing professional history.</p>
+                            <div class="tech-stack">HTML, CSS, JS</div>
+                            <a href="index.html" target="_blank" class="project-link">View Project
+                                &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">JIBAR to ZARONIA</span>
+                        </div>
+                        <div class="card-body">
+                            <p>Financial conversion project handling the transition from JIBAR to the new ZARONIA
+                                benchmark rate.</p>
+                            <div class="tech-stack">Finance, Modelling</div>
+                            <a href="jibar-zaronia-demo/index.html" target="_blank" class="project-link">View Project
+                                &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Education Tab -->
+            <section id="education" class="tab-content">
+                <div class="section-header">
+                    <h1>Education & Qualifications</h1>
+                </div>
+
+                <!-- UCT -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">University of Cape Town (UCT)</span>
+                        <span class="card-date">2022 – Present</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>PGDA:</strong> (2026)</li>
+                            <li><strong>B.Bus Science Finance & Accounting:</strong> Completed 2025</li>
+                            <li><strong>Awards:</strong> UCT Sport Scholarship Award.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CFA -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">CFA Institute</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Passed Level 1</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Michaelhouse -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Michaelhouse</span>
+                        <span class="card-date">2017 – 2021</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>Academic Performance:</strong> Maintained an "A" average throughout.</li>
+                            <li><strong>Matric Results:</strong> Achieved Five Distinctions.</li>
+                            <li><strong>Awards:</strong> Academic Honours; Rector's All-Rounder Scholarship.</li>
+                            <li><strong>The Snell Society:</strong> Selected by Rector for rigorous academic debate.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- WHPS -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Waterkloof House Preparatory School (WHPS)</span>
+                        <span class="card-date">2007 – 2016</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Leadership Tab -->
+            <section id="leadership" class="tab-content">
+                <div class="section-header">
+                    <h1>Leadership, Awards and Community</h1>
+                </div>
+
+                <!-- UCT -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">University of Cape Town</span>
+                        <span class="card-date">2022 – Present</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>
+                                <strong>Chairman UCT Rugby Club:</strong> (2024-Present)
+                                <ul style="margin-top: 0.5rem; margin-bottom: 0.5rem; list-style-type: circle;">
+                                    <li><strong>Strategic Leadership & Governance:</strong> Provided oversight for the
+                                        club’s executive committee, ensuring all operations aligned with university
+                                        governance, ethical standards, and long-term strategic objectives.</li>
+                                    <li><strong>Financial & Risk Management:</strong> Managed the club’s commercial
+                                        viability and budget allocation, implementing controls to mitigate financial and
+                                        reputational risks within a high-pressure environment.</li>
+                                    <li><strong>Stakeholder Engagement:</strong> Acted as the primary liaison between
+                                        sponsors, university administration, coaching staff, and the student body to
+                                        maintain diverse and productive partnerships.</li>
+                                    <li><strong>Business Acumen:</strong> Driven by a "value-creation" mindset, oversaw
+                                        fundraising initiatives and commercial partnerships to ensure the sustainable
+                                        growth of the club’s brand.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Vice-Captain UCT Ikey Tigers First XV:</strong> (2025)</li>
+                            <li><strong>Captain UCT u20A:</strong> (2023)</li>
+                            <li><strong>Vice-Captain UCT u20A:</strong> (2022)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Michaelhouse -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Michaelhouse</span>
+                        <span class="card-date">2017 – 2021</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>
+                                <strong>Head of House and School Prefect</strong>
+                                <ul style="margin-top: 0.5rem; margin-bottom: 0.5rem; list-style-type: circle;">
+                                    <li><strong>Ethical Leadership:</strong> Upheld institutional values and integrity
+                                        while overseeing the conduct and well-being of 70+ students.</li>
+                                    <li><strong>Risk & Decision-Making:</strong> Mitigated operational and social risks
+                                        through proactive house management and conflict resolution.</li>
+                                    <li><strong>Relational Acumen:</strong> Led diverse teams and fostered an inclusive
+                                        environment by managing complex interpersonal dynamics.</li>
+                                    <li><strong>Strategy & Resource Management:</strong> Optimized the allocation of
+                                        time and house resources to successfully execute events and initiatives.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Rector’s All Rounder Scholarship</strong></li>
+                            <li><strong>The Chick Henderson Memorial Award:</strong> Awarded to a boy who has displayed
+                                excellent sporting and academic potential, coupled with active involvement in the
+                                school’s service program. The recipient should also display a strong sense of
+                                sportsmanship and comradeship towards peers and staff.</li>
+                            <li><strong>The Snell Society:</strong> 14 boys selected by Rector to participate in
+                                academic discussion and debate around areas of worldwide interest and to prepare you
+                                further for rigorous study at the top universities in the world.</li>
+                            <li><strong>Community Work:</strong> Done at SPCA and Khamizula Orphanage.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- WHPS -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Waterkloof House Preparatory School (WHPS)</span>
+                        <span class="card-date">2007 – 2016</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>The Wain Good Fellowship Prize:</strong> The outstanding boy who made a real
+                                contribution to the school – academics, sport and culture.</li>
+                            <li><strong>The Tindall Cup and Ball:</strong> For soccer achievement.</li>
+                            <li><strong>The Miller Family Cup:</strong> For the most outstanding rugby player.</li>
+                            <li><strong>The Ben Steyn Cup:</strong> For the best allrounder sportsman at WHPS.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Sport Tab -->
+            <section id="sport" class="tab-content">
+                <div class="section-header">
+                    <h1>Sporting Achievements</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Rugby</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>Varsity Cup:</strong> Winner (2025), Runner Up (2024).</li>
+                            <li><strong>University World Cup:</strong> Winner (France, 2023).</li>
+                            <li><strong>Provincial:</strong> Western Province U21 (2023) & U20 (2022); KZN Rugby U16
+                                Grant Khomo.</li>
+                            <li><strong>Individual:</strong> 1st Team Player’s Player of the Year, UCT Rugby Leadership
+                                Award (2025).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Other Sports</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>Cricket:</strong> SA Schools Cricket (2021), Michaelhouse 1st Team Vice-Captain.
+                            </li>
+                            <li><strong>Soccer:</strong> KZN Soccer (annually), Michaelhouse 1st Team Captain.</li>
+                            <li><strong>Awards:</strong> Des Sacco Award (Michaelhouse Sportsman of the Year).</li>
+                            <li><strong>Major Cups (WHPS):</strong> Miller Family Cup (Rugby), Tindall Cup (Soccer), Ben
+                                Steyn Cup (Best All-Rounder).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. References Tab -->
+            <section id="references" class="tab-content">
+                <div class="section-header">
+                    <h1>References</h1>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-title">Tom Dawson-Squibb</span>
+                        <p class="card-subtitle">Int. High Performance Coach</p>
+                        <p style="margin-top: 0.5rem; color: var(--accent);">+27 (0) 83 860 6997</p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Greg Fury</span>
+                        <p class="card-subtitle">Targe Capital</p>
+                        <p style="margin-top: 0.5rem;">+27 (0) 82 883 1308</p>
+                        <a href="mailto:greg@targe.co.za">greg@targe.co.za</a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Robbie Fleck</span>
+                        <p class="card-subtitle">Fanlib</p>
+                        <p style="margin-top: 0.5rem;">+27 (0) 82 443 3463</p>
+                        <a href="mailto:Rob@fanlib.com">Rob@fanlib.com</a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Wes Chetty</span>
+                        <p style="margin-top: 0.5rem;">+27 (0) 83 273 5997</p>
+                        <a href="mailto:chettywesley@yahoo.com">chettywesley@yahoo.com</a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">Neville Isdell</span>
+                        <a href="mailto:neville@isdell.net">neville@isdell.net</a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-title">David Deetlefs</span>
+                        <p style="margin-top: 0.5rem;">+27 (0) 82 311 8626</p>
+                        <a href="mailto:ddeetlefs@lionheadcapital.com">ddeetlefs@lionheadcapital.com</a>
+                    </div>
+                    <div class="card">
+                        <span class="card-title">Paul Quirk</span>
+                        <p style="margin-top: 0.5rem;">+27 (0) 72 994 4005</p>
+                        <a href="mailto:pquirk@lionheadcapital.com">pquirk@lionheadcapital.com</a>
+                    </div>
+                    <div class="card">
+                        <span class="card-title">Edward LePine Williams</span>
+                        <p style="margin-top: 0.5rem;">+27 (0) 79 625 2582</p>
+                        <a href="mailto:elw@lionheadcapital.com">elw@lionheadcapital.com</a>
+                    </div>
+                </div>
+            </section>
+
         </main>
     </div>
 
