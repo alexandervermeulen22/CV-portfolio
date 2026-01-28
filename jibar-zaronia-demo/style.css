@@ -1,0 +1,273 @@
+:root {
+    /* RMB Brand Colors */
+    --rmb-amber: #F7A81B;
+    --rmb-black: #121212;
+    --rmb-card-bg: #1E1E1E;
+    /* Solid/Premium Dark */
+    --glass-bg: rgba(30, 30, 30, 0.7);
+    --glass-border: rgba(247, 168, 27, 0.2);
+    /* Subtle amber border */
+
+    --text-main: #FFFFFF;
+    --text-muted: #B0B0B0;
+
+    --success: #2ecc71;
+    --danger: #e74c3c;
+
+    --font-family: 'Outfit', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--rmb-black);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    background-image: radial-gradient(circle at 10% 20%, rgba(247, 168, 27, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(247, 168, 27, 0.05) 0%, transparent 20%);
+}
+
+/* Background - Removed "Globes" for cleaner look, using subtle gradients above */
+.background-globes {
+    display: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container {
+    margin-bottom: 1rem;
+}
+
+.rmb-logo {
+    height: 100px;
+    width: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    /* filter removed to show full color logo */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+header p {
+    color: var(--rmb-amber);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* Professional Cards */
+.glass-card {
+    background: var(--rmb-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Clean generic border */
+    border-top: 2px solid var(--rmb-amber);
+    /* Amber accent on top */
+    border-radius: 8px;
+    /* Sharper corners for business feel */
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Input Panel */
+.input-panel h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.8rem;
+    color: var(--rmb-amber);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background: #121212;
+    color: #fff;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--rmb-amber);
+    box-shadow: 0 0 0 1px var(--rmb-amber);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cta-button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    background: var(--rmb-amber);
+    color: #000;
+    /* Contrast text on Amber */
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid var(--rmb-amber);
+    color: var(--rmb-amber);
+}
+
+.secondary-btn:hover {
+    background: rgba(247, 168, 27, 0.1);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(247, 168, 27, 0.3);
+}
+
+.btn-shine {
+    display: none;
+}
+
+.error-msg {
+    color: var(--danger);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    min-height: 1.2em;
+}
+
+/* Results Panel */
+.results-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.result-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+    /* Consistent corner radius */
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.result-card h3 {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.result-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: var(--text-main);
+}
+
+.result-sub {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.highlight-card {
+    border-color: var(--rmb-amber);
+    border-width: 1px;
+    border-style: solid;
+    background: rgba(247, 168, 27, 0.05);
+}
+
+.highlight-card .result-value {
+    color: var(--rmb-amber);
+}
+
+.full-width {
+    grid-column: span 2;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.difference {
+    color: var(--text-main);
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
